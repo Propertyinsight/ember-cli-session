@@ -1,6 +1,6 @@
 import Ember from 'ember';
 import ajax from 'ic-ajax';
-import config from '../../app/config/environment';
+import config from '../../../app/config/environment';
 
 export default Ember.Route.extend({
 
