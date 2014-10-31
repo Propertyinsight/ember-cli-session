@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
 
-    classNames: ['alert'],
+    classNames: ['alert', 'alert-global'],
 
     classNameBindings: ['active', 'type'],
 
