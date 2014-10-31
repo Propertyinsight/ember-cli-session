@@ -21,7 +21,7 @@ export default Ember.ObjectController.extend({
             }.bind(this), function(response) {
 
                 this.set('signingIn', false);
-                this.session.showGlobalAlert(response.jqXHR.responseJSON || response.jqXHR.responseText, 6000, 'danger');
+                this.session.showGlobalAlert(response.jqXHR, 6000, 'danger');
 
             }.bind(this));
         }
