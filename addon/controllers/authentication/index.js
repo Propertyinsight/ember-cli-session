@@ -8,8 +8,8 @@ export default Ember.ObjectController.extend({
             
             this.set('signingIn', true);
             ajax({
-                type: 'PUT',
-                url: '/' + this.get('session-config.apiNamespace') + '/authentication/signin',
+                type: 'POST',
+                url: '/' + this.get('session-config.apiNamespace') + '/sessions',
                 contentType: 'application/json',
                 data: JSON.stringify({
                     credential: this.getProperties('email', 'password', 'rememberMe')

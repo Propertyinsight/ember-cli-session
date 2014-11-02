@@ -5,8 +5,8 @@ export default Ember.Route.extend({
 
 	beforeModel: function(transition) {
 		return ajax({
-			type: 'PUT',
-			url: '/' + this.get('session-config.apiNamespace') + '/authentication/signout'
+			type: 'DELETE',
+			url: '/' + this.get('session-config.apiNamespace') + '/sessions'
 		}).then(function(response) {
 		    window.location.href = this.get('session-config.baseURL') + 'authentication';
 		}.bind(this), function(reason) {
