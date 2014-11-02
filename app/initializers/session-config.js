@@ -1,5 +1,7 @@
 export function initialize(container, application) {
 
+    console.log('application', application);
+
     var config = {
         api_namespace: application.get('api_namespace')
     };
