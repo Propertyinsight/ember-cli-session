@@ -7,9 +7,9 @@ export default Ember.Route.extend({
 	beforeModel: function(transition) {
 		return ajax({
 			type: 'PUT',
-			url: '/api_v1/authentication/signout'
+			url: '/' + this.get('session-config.apiNamespace') + '/authentication/signout'
 		}).then(function(response) {
-			window.location.href = config.baseURL + 'authentication';
+		    window.location.href = this.get('session-config.baseURL') + 'authentication';
 		}, function(reason) {
 			this.replaceWith('authentication/signout-failed');
 		});

@@ -1,13 +1,15 @@
 export function initialize(container, application) {
 
-    console.log('application', application);
-
     var config = {
-        api_namespace: application.get('api_namespace')
+        baseURL: application.get('baseURL'),
+        apiNamespace: application.get('apiNamespace')
     };
 
     application.register('config:session-config', config, {instantiate: false});
-    application.inject('route', 'session-config', 'config:session-config');
+
+    ['route', 'controller', 'view'].forEach(function(componentType) {
+        application.inject(componentType, 'session-config', 'config:session-config');
+    });
 
 };
 
