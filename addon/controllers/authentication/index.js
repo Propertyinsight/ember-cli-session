@@ -5,6 +5,9 @@ export default Ember.ObjectController.extend({
 
     actions: {
         signIn: function() {
+
+            console.log('api_namespace', this.get('session-config.api_namespace'));
+
             this.set('signingIn', true);
             ajax({
                 type: 'PUT',
