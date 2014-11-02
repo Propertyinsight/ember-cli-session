@@ -12,7 +12,7 @@ export default Ember.Route.extend({
 		    window.location.href = this.get('session-config.baseURL') + 'authentication';
 		}.bind(this), function(reason) {
 			this.replaceWith('authentication/signout-failed');
-		}).bind(this);
+		}.bind(this));
 	}
 
 });
