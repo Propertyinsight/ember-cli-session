@@ -10,9 +10,9 @@ export default Ember.Route.extend({
 			url: '/' + this.get('session-config.apiNamespace') + '/authentication/signout'
 		}).then(function(response) {
 		    window.location.href = this.get('session-config.baseURL') + 'authentication';
-		}, function(reason) {
+		}.bind(this), function(reason) {
 			this.replaceWith('authentication/signout-failed');
-		});
+		}).bind(this);
 	}
 
 });
