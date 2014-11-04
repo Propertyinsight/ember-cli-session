@@ -8,7 +8,7 @@ export default Ember.Route.extend({
     beforeModel: function(transition) {
         return ajax({
             type: 'GET',
-            url: '/' + this.get('session-config.apiNamespace') + '/sessions'
+            url: '/' + this.get('session-config.apiNamespace') + '/users/me'
         }).then(function(response) {
 
             if (!this.allowedRoles.length) {
