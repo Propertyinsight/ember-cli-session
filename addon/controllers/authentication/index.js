@@ -12,7 +12,11 @@ export default Ember.ObjectController.extend({
                 url: '/' + this.get('session-config.apiNamespace') + '/sessions',
                 contentType: 'application/json',
                 data: JSON.stringify({
-                    user: this.getProperties('email', 'password', 'rememberMe')
+                    user: {
+                        email: this.get('email'),
+                        password: this.get('password'),
+                        remember_me: this.get('rememberMe')
+                    }
                 })
             }).then(function() {
                 this.set('signingIn', false);
