@@ -33,6 +33,9 @@ export default Ember.Mixin.create({
         if (Ember.typeOf(error.responseJSON) === 'object' && Ember.typeOf(error.responseJSON.errors) === 'object')
             return this._messagesFromObject(error.responseJSON.errors);
 
+        if (Ember.typeOf(error.message) === 'string')
+            return [ error.message ];
+
         return ['There was an unexpected error.'];
     },
 
