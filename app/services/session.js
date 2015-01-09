@@ -9,7 +9,7 @@ export default Ember.Object.extend({
 
     globalAlert: null,
 
-    user: null,  
+    userId: null,  
 
     transitionOnSignIn: null,
 
