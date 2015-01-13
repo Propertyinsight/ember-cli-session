@@ -31,7 +31,7 @@ export default Ember.Route.extend({
     },
 
     setUser: function(response) {
-        this.store.push('user', response.user);
+        this.store.push('user', this.store.normalize('user', response.user));
         this.session.set('user', this.store.find('user', response.user.id));
     },
 
