@@ -12,13 +12,13 @@ export default Ember.Route.extend({
         }).then(function(response) {
 
             if (!this.allowedRoles.length) {
-                this.session.set('userId', response.user.id);
+                this.setUser(response);
                 return;
             }
 
             for (var i = 0; i < this.allowedRoles.length; i++)
                 if (response.user.roles.contains(this.allowedRoles[i])) {
-                    this.session.set('userId', response.user.id);
+                    this.setUser(response);
                     return;
                 }
 
@@ -28,6 +28,11 @@ export default Ember.Route.extend({
             this.redirectToSignIn(transition);
         }.bind(this));
 
+    },
+
+    setUser: function(response) {
+        this.store.push('user', response.user);
+        this.session.set('user', response.user);
     },
 
     redirectToSignIn: function(transition) {
