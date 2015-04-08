@@ -19,6 +19,14 @@ export default Ember.Mixin.create({
         // When substate goes into error, easiest just to pass in the error substate model.
         // if server returns 422, then the model will be DS.InvalidError, otherwise, it will be jqXHR
 
+        var fallbackMessages = ['There was an unexpected error.'];
+
+        if (Ember.typeOf(error) === 'undefined')
+            return fallbackMessages;
+
+        if (Ember.typeOf(error) === 'null')
+                return fallbackMessages;
+
         if (Ember.typeOf(error) === 'string')
             return [ error ];
 
@@ -29,14 +37,14 @@ export default Ember.Mixin.create({
         // DS.Errors, which is attached to the model as record.get('errors'), only contains the errors for the attributes that are on the model. http://stackoverflow.com/a/24031233/188740
         if (error instanceof DS.InvalidError)
             return this._messagesFromObject(error.errors);
-        
+
         if (Ember.typeOf(error.responseJSON) === 'object' && Ember.typeOf(error.responseJSON.errors) === 'object')
             return this._messagesFromObject(error.responseJSON.errors);
 
         if (Ember.typeOf(error.message) === 'string')
             return [ error.message ];
 
-        return ['There was an unexpected error.'];
+        return fallbackMessages;
     },
 
     _messagesFromObject: function(object) {
