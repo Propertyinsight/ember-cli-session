@@ -41,6 +41,9 @@ export default Ember.Mixin.create({
         if (Ember.typeOf(error.responseJSON) === 'object' && Ember.typeOf(error.responseJSON.errors) === 'object')
             return this._messagesFromObject(error.responseJSON.errors);
 
+        if (Ember.typeOf(error.jqXHR) === 'object' && Ember.typeOf(error.jqXHR.responseJSON) === 'object' && Ember.typeOf(error.jqXHR.responseJSON.errors) === 'object')
+            return this._messagesFromObject(error.jqXHR.responseJSON.errors);
+
         if (Ember.typeOf(error.message) === 'string')
             return [ error.message ];
 
