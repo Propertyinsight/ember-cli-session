@@ -32,7 +32,9 @@ export default Ember.Route.extend({
 
   setUser: function(response) {
     this.store.push(this.store.normalize('user', response.user));
-    this.session.set('user', this.store.findRecord('user', response.user.id));
+    this.store.findRecord('user', response.user.id).then(function(user){
+      this.session.set('user', user);
+    });
   },
 
   redirectToSignIn: function(transition) {
