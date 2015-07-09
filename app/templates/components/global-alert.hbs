@@ -1,4 +1,4 @@
 <span class="glyphicon glyphicon-remove pull-right" {{action "close" }}></span>
-{{#each message in model.messages}}
-    <div>{{message}}</div>
+{{#each model.messages as |message|}}
+  <div>{{message}}</div>
 {{/each}}
