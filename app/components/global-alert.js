@@ -1,23 +1,24 @@
 import Ember from 'ember';
+const {
+  Component,
+  computed
+} = Ember;
 
-export default Ember.Component.extend({
+export default Component.extend({
+  classNames: ['alert', 'alert-global'],
+  classNameBindings: ['active', 'type'],
 
-    classNames: ['alert', 'alert-global'],
+  active: computed('model.active', function() {
+    return this.get('model.active');
+  }),
 
-    classNameBindings: ['active', 'type'],
+  type: computed('model.type', function() {
+    return 'alert-' + this.get('model.type');
+  }),
 
-    active: function() {
-        return this.get('model.active');
-    }.property('model.active'),
-
-    type: function() {
-        return 'alert-' + this.get('model.type');
-    }.property('model.type'),
-
-    actions: {
-        close: function() {
-            this.get('model').hide();
-        }
+  actions: {
+    close() {
+      this.get('model').hide();
     }
-
+  }
 });

@@ -1,11 +1,12 @@
 import Ember from 'ember';
+const { Route } = Ember;
 
-export default Ember.Route.extend({
-    model: function() {
-        return Ember.Object.create({
-            email: '',
-            password: '',
-            rememberMe: false
-        });
-    }
+export default Route.extend({
+  model() {
+    return Ember.Object.create({
+      email: '',
+      password: '',
+      rememberMe: false
+    });
+  }
 });
